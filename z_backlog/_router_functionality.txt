@@ -1,0 +1,2 @@
+@TODO attach routers functionality to the following pages:
+  home, product, products coverage, products_list, testWizard

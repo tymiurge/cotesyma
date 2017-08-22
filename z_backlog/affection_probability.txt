@@ -1,0 +1,5 @@
+
+@TODO: (S2) as a TM i want to see affection probability for a test in order to decide whether the test should be included in a test cycle
+  - affection probability should be influenced by amount of pull request since last run
+  - affection probability should be calculated rather for the modules linked to the test
+  where? - in test cycle wizard, probably in test wizard

@@ -1,0 +1,11 @@
+@TODO product settings
+
+1. name + description
+2. modules
+  - coverage - use or not
+    - types of tests
+    - test fields
+  - components - use or not
+    - local db
+    - fetching api
+  - 

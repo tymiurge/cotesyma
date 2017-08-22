@@ -1,0 +1,10 @@
+@TODO as a quality contributor i want to subscribe on <entity> changes so that i'm kept informed on changes
+
+list of entities:
+- test
+- report
+- product status
+- and whatever in general (generate stories later)
+
+list of updates to be available in the top panel (bell + budges with number of updates)
+? if update is VERY IMPORTANT the bell should be red until the change is seen 

@@ -1,0 +1,11 @@
+@TODO prototype creation
+
+Pages:
+  - Home: with links to Products, Test Cycles, Users and Groups, Reports
+  - Products: card view of products. Displayed info - status (as a circle), name, short description
+  - Product: tabbed view. The following tabs: settings, builds, coverage, modules, bugs, releases
+  - Product Coverage: grid view. Tests.
+  - Test View: tabbed view. The following tabs - test, statistics
+  - Test View -> Test: name, objective, fields (links to modules as example, automation status, etc), test body
+
+  

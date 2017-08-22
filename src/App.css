@@ -1,0 +1,11 @@
+/**********************************************************/
+/*          menu (navbar) modifications                   */
+/**********************************************************/
+.ui.menu {
+    border-radius: 0px !important;
+}
+
+.mytitle {
+    text-decoration: none;
+    margin-left: calc(50% - 90px) !important;
+}

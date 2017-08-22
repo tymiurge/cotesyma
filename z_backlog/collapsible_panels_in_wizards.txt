@@ -1,0 +1,1 @@
+@TODO attach menu at top of segments in wizards, containing title and collapse button

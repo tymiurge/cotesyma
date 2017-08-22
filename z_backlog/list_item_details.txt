@@ -1,0 +1,7 @@
+@TODO
+test cycles list should be expandable
+meaning there is a button that shows small widget with
+some statistics
+for test cycle it might be:
+ - total vs passed vs failed
+ - activities per day 
