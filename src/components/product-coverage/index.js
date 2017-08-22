@@ -3,7 +3,7 @@ import ProductCoverageHeader from './sections/header'
 import { Container } from 'semantic-ui-react'
 import { ItemsList } from './../common'
 
-// testing
+// testing testing again
 class ProductCoverage extends Component {
     render () {
         const testsList = [
