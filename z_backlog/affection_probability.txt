@@ -3,3 +3,4 @@
   - affection probability should be influenced by amount of pull request since last run
   - affection probability should be calculated rather for the modules linked to the test
   where? - in test cycle wizard, probably in test wizard
+

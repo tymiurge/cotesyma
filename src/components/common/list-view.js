@@ -16,8 +16,9 @@ class ItemsList extends Component {
     
     renderTableHeader = () => {
         return this.props.headers.map((header, idx) =>{
+            const { type } = header
             return (
-                <Table.HeaderCell key={idx}>
+                <Table.HeaderCell key={idx} collapsing={type == 'id' || type=='combo'}>
                     {header.title}
                 </Table.HeaderCell>
             )    

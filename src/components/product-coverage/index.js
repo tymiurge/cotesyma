@@ -3,16 +3,15 @@ import ProductCoverageHeader from './sections/header'
 import { Container } from 'semantic-ui-react'
 import { ItemsList } from './../common'
 
-// testing testing again
 class ProductCoverage extends Component {
     render () {
         const testsList = [
             {
-                id:0, title: 'Home sanity'
+                id:0, title: 'Home sanity', feature: 'Home'
             }, {
-                id: 1, title: 'Products list sanity'
+                id: 1, title: 'Products list sanity', feature: 'Products List'
             }, {
-                id: 2, title: 'Product config sanity'
+                id: 2, title: 'Product config sanity', feature: 'Rroduct config'
             }
         ]
         const headers = [
@@ -24,7 +23,7 @@ class ProductCoverage extends Component {
             <Container fluid>
                 <ProductCoverageHeader />
                 <Container>
-                    <ItemsList headers={headers}/>
+                    <ItemsList headers={headers} items={testsList}/>
                 </Container>
             </Container>
         )
