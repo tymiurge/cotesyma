@@ -23,7 +23,7 @@ class ProductCoverage extends Component {
             <Container fluid>
                 <ProductCoverageHeader />
                 <Container>
-                    <ItemsList headers={headers} items={testsList}/>
+                    <ItemsList headers={headers} data={testsList}/>
                 </Container>
             </Container>
         )

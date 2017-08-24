@@ -13,26 +13,48 @@ const propTypes = {
 }
 
 class ItemsList extends Component {
-    
-    renderTableHeader = () => {
-        return this.props.headers.map((header, idx) =>{
-            const { type } = header
-            return (
-                <Table.HeaderCell key={idx} collapsing={type == 'id' || type=='combo'}>
-                    {header.title}
-                </Table.HeaderCell>
-            )    
-        })
+
+    constructor (props) {
+        super(props)
+        const headers = this.props.headers.map((h, idx) => ({
+            order: idx,
+            field: h.field,
+            collapsing: h.type == 'id' || h.type=='combo',
+            title: h.title
+        }))
+        const items = this.props.data.map((item, idx) => 
+            [
+                ... headers.map(h => ({
+                    text: item[h.field],
+                    collapsing: h.collapsing
+                }))
+            ]
+        )
+        this.state = {
+            headers,
+            items
+        }
     }
+    
+    renderTableHeader = () => this.state.headers.map(h => (
+        <Table.HeaderCell key={h.order} collapsing={h.collapsing}>
+            {h.title}
+        </Table.HeaderCell>
+))
+
+    renderRowCells = row => row.map(cell => (
+        <Table.Cell collapsing={cell.collapsing}>
+            {cell.text}
+        </Table.Cell>
+    ))
+
+    renderTableRows = () => this.state.items.map((row, idx) => (
+        <Table.Row>
+            {this.renderRowCells(row)}
+        </Table.Row>
+    ))
 
     render () {
-        const headers = [{
-            field: 'id', title: 'ID', type: 'id'
-        }, {
-            field: 'title', title: 'Title', type: 'text'
-        }, {
-            field: 'features', title: 'Features', type: 'combo'
-        }]
         return (
             <Table minimal>
                 <Table.Header>
@@ -40,6 +62,9 @@ class ItemsList extends Component {
                         { this.renderTableHeader() }
                     </Table.Row>
                 </Table.Header>
+                <Table.Body>
+                    {this.renderTableRows()}    
+                </Table.Body>
             </Table>
         )
     }
