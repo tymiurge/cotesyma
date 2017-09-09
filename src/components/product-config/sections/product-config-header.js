@@ -25,7 +25,6 @@ class ProductConfigHeader extends Component {
   render () {
 
     const { currentTab } = this.props
-    const { productId } = this.props
     return (
       <Menu inverted color="black">
         <Menu.Menu>

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import ProductFieldsToolbar from './product-fields-toolbar'
-import { Segment, Icon, Divider, Form, Input, Accordion, Progress, Label, Header, Menu, Dropdown } from 'semantic-ui-react'
+import { Segment, Icon, Form, Progress, Menu } from 'semantic-ui-react'
 import { v4 } from 'js-uuid'
 import { TagsInput } from './../../common'
 

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { ItemOutward } from './../../../common/'
-import { Segment, Form, Label, TextArea, Menu, Button } from 'semantic-ui-react'
+import { Segment, Form, Menu, Button } from 'semantic-ui-react'
 
 class ProductConfigOutward extends Component {
     render () {

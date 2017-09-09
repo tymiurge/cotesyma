@@ -19,7 +19,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     onNewProductRequest: () => { dispatch($newProductRequest()) },
     productsRequest: () => { dispatch($fetchProducts()) },
-    onFiltering: (filter) => { dispatch($setProductsFilter(filter)) }
+    onFiltering: filter => { dispatch($setProductsFilter(filter)) }
   }
 }
 
