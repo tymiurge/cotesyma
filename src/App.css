@@ -9,3 +9,12 @@
     text-decoration: none;
     margin-left: calc(50% - 90px) !important;
 }
+
+.p-left-right-6 {
+    padding-left: 6px !important;
+    padding-right: 6px !important;
+}
+
+.p-left-0-right-6 {
+    padding-left: 0px !important;
+}

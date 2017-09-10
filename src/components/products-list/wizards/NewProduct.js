@@ -40,7 +40,8 @@ class NewProductWizard extends Component {
     return (
       <Segment inverted color="blue">
         <ProductOutward
-          changePipeline={(change) => this.changePipeline(change)} />
+          changePipeline={(change) => this.changePipeline(change)}
+        />
         <Segment size="tiny">
           <Button
             as="a" color="blue" size="tiny"

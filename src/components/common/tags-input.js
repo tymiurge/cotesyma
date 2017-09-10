@@ -72,9 +72,9 @@ class TagsInput extends Component {
             <label style={{width: props.labelWidth + 'px'}}>{props.label}</label>
           </Form.Field>
           {
-            this.state.tags.map(tag => {
+            this.state.tags.map((tag, idx) => {
               return (
-                <Form.Field>
+                <Form.Field key={idx}>
                   <Label size="small">
                     {tag}
                     <Icon name="delete" link onClick={this.deleteTag.bind(this, tag)} />

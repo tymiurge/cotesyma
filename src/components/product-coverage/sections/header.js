@@ -5,7 +5,7 @@ const ProductCoverageHeader = () => {
   return (
     <Menu inverted color="black">
       <Menu.Item>
-        <Icon name="home" color="red" size="large" />
+        <Icon name="home" color="green" size="large" />
       </Menu.Item>
 
       <Menu.Item header>
