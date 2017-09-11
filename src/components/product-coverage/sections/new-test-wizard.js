@@ -5,7 +5,7 @@ import { TagsInput } from './../../common'
 const NewTestWizard = props => {
     return (
         <div>
-            <Menu attached="top" borderless size="large" inverted color="blue">
+            <Menu attached="top" borderless size="large" inverted color="black">
                 <Menu.Item>
                     <label>New Test</label>
                 </Menu.Item>
@@ -29,12 +29,12 @@ const NewTestWizard = props => {
                     />    
                 </Form>
             </Segment>
-            <Menu attached borderless size={'tiny'}>
+            <Menu attached borderless size={'tiny'} inverted color="black">
                 <Menu.Item className={'p-left-right-6'}>
-                  <Button color='green'>Save</Button>
+                  <Button color='green' onClick={ () => {props.onSaveClick({name:'later'})} }>Save</Button>
                 </Menu.Item>
                 <Menu.Item className={'p-left-0-right-6'}>
-                  <Button color='red'>Cancel</Button>
+                  <Button color='red' onClick={ () => {props.onCancelClick()} }>Cancel</Button>
                 </Menu.Item>
             </Menu>
         </div>

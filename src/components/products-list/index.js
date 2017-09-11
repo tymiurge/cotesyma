@@ -3,7 +3,7 @@ import {
   $newProductRequest,
   $fetchProducts,
   $setProductsFilter
-} from './../../actions/product'
+} from './../../actions/product-list-actions'
 import ProductsList from './pages/ProductsList'
 
 const mapStateToProps = (state) => {

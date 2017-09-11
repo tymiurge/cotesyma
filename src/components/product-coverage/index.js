@@ -1,19 +1,26 @@
 import { connect } from 'react-redux'
 import ProductCoverage from './pages/product-coverage'
 import {
-    $fetchProductTests
-} from './../../actions/product-tests'
+    $fetchProductTests,
+    $enterNewTestCreation,
+    $exitNewTestCreation,
+    $addTest
+} from './../../actions/product-tests-actions'
 
 const mapStateToProps = state => {
     const { productTests } = state
     return {
-        tests: productTests.list
+        tests: productTests.list,
+        wizardDisplayed: productTests.newTestWizardDisplayed 
     }
 }
 
 const mapDispatchToProps = dispatch => {
     return {
-        onTestsRequest: productId => { dispatch($fetchProductTests(productId)) }
+        onTestsFetchRequest: productId => { dispatch($fetchProductTests(productId)) },
+        onEnterTestCreation: () => { dispatch($enterNewTestCreation()) },
+        onExitTestCreation: () => { dispatch($exitNewTestCreation()) },
+        onTestAdding: testData => { dispatch($addTest(testData)) }
     }
 }
 

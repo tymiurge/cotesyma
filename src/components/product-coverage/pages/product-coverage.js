@@ -8,7 +8,14 @@ import PropTypes from 'prop-types'
 
 const propTypes = {
     tests: PropTypes.array.isRequired,
-    onTestsRequest: PropTypes.func.isRequired   
+    wizardDisplayed: PropTypes.bool.isRequired,
+    onTestsFetchRequest: PropTypes.func.isRequired, 
+    onTestAdding: PropTypes.func,
+    onEnterTestCreation: PropTypes.func,
+    onExitTestCreation: PropTypes.func,
+}
+
+const defaultProps = {
 }
 
 class ProductCoverage extends Component {
@@ -18,20 +25,23 @@ class ProductCoverage extends Component {
         this.productId = this.props.match.params.id * 1
     }
 
-    toggleNewTestWizard = () => {
+    openNewTestWizard = () => {
+        this.props.onEnterTestCreation()
+    }
+
+    closeNewTestWizard = () => {
+        this.props.onExitTestCreation()
     }
 
     componentDidMount () {
-        this.props.onTestsRequest(this.productId)
+        this.props.onTestsFetchRequest(this.productId)
     }
 
-    componentWillUpdate () {
-        console.log('product coverage will update')
-        console.log(this.props.tests)
+    addTest = testData => {
+        this.props.onTestAdding(testData)
     }
 
     render () {
-        
         const headers = [
             {field: 'id', title: 'ID', type: 'id'},
             {field: 'title', title: 'Title', type: 'input'},
@@ -41,8 +51,16 @@ class ProductCoverage extends Component {
             <Container fluid>
                 <ProductCoverageHeader />
                 <Container>
-                    <Toolbar onNewItemRequest={() => { this.toggleNewTestWizard()}}/>
-                    <NewTestWizard />    
+                    <Toolbar
+                        onNewItemRequest={() => { this.openNewTestWizard()}}
+                    />
+                    {
+                        this.props.wizardDisplayed
+                        && <NewTestWizard 
+                            onCancelClick={ () => { this.closeNewTestWizard()} }
+                            onSaveClick={ testData => { this.addTest(testData)} }
+                        />
+                    }
                     <ItemsList headers={headers} items={this.props.tests}/>
                 </Container>
             </Container>
@@ -51,5 +69,6 @@ class ProductCoverage extends Component {
 }
 
 ProductCoverage.propTypes = propTypes
+ProductCoverage.defaultProps = defaultProps
 
 export default ProductCoverage

@@ -5,7 +5,7 @@ import {
   $testCyclesRequest,
   $setTestCyclesFilter,
   $resetTestCyclesFilter
-} from './../../actions/test-cycles'
+} from './../../actions/test-cycles-actions'
 
 const mapStateToProps = (state) => {
   const { testCycles } = state
