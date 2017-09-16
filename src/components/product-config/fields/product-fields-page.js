@@ -3,6 +3,7 @@ import ProductFieldsToolbar from './product-fields-toolbar'
 import { Segment, Icon, Form, Progress, Menu } from 'semantic-ui-react'
 import { v4 } from 'js-uuid'
 import { TagsInput } from './../../common'
+import InputFieldConfig from './input-field-wizard'
 
 class ProductFields extends Component {
   constructor (props) {
@@ -56,12 +57,23 @@ class ProductFields extends Component {
     return (
       <div>
         <ProductFieldsToolbar />
+        <InputFieldConfig />
         <div>
+          {/* ==================================================================*/ }
           <Menu attached="top" borderless size="large" inverted color="orange">
             <Menu.Item>
               <Icon name="settings" color="black" link />
             </Menu.Item>
+            <Menu.Item className={'p-left-0'}>
+              <label>Author - an input to identify the test creator</label>
+            </Menu.Item>
+          </Menu>
+          {/* ==================================================================*/ }
+          <Menu attached borderless size="large" inverted color="orange">
             <Menu.Item>
+              <Icon name="settings" color="black" link />
+            </Menu.Item>
+            <Menu.Item className={'p-left-0'}>
               <label>Author - an input to identify the test creator</label>
             </Menu.Item>
 

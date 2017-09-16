@@ -10,7 +10,7 @@ const AdminTools = () => {
             <Item>
               <Item.Image size="tiny"><Icon name="users" size="huge" color="black" /></Item.Image>
               <Item.Content verticalAlign="middle">
-                <Item.Header as="a">Users Managemnt</Item.Header>
+                <Item.Header>Users Managemnt</Item.Header>
                 <Item.Description>
                   Manage users access permissions
                 </Item.Description>

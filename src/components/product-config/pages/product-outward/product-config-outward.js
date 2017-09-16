@@ -34,7 +34,7 @@ class ProductConfigOutward extends Component {
                         <Button primary>Save</Button>
                     </Menu.Item>
                     <Menu.Item>
-                        <Button danger>Cancel</Button>
+                        <Button>Cancel</Button>
                     </Menu.Item>
                 </Menu>
                 

@@ -10,7 +10,7 @@ const DefaultTools = () => {
             <Item>
               <Item.Image size="tiny"><Icon name="cubes" size="huge" color="black" /></Item.Image>
               <Item.Content verticalAlign="middle">
-                <Item.Header as="a">Products</Item.Header>
+                <Item.Header>Products</Item.Header>
                 <Item.Description>
                   Applications under tests
                 </Item.Description>
@@ -31,7 +31,7 @@ const DefaultTools = () => {
             <Item>
               <Item.Image size="tiny"><Icon name="hourglass one" size="huge" color="black" /></Item.Image>
               <Item.Content verticalAlign="middle">
-                <Item.Header as="a">Test Plans</Item.Header>
+                <Item.Header>Test Plans</Item.Header>
                 <Item.Description>
                   Testing activities
                 </Item.Description>
@@ -52,7 +52,7 @@ const DefaultTools = () => {
             <Item>
               <Item.Image size="tiny"><Icon name="options" size="huge" color="black" /></Item.Image>
               <Item.Content verticalAlign="middle">
-                <Item.Header as="a">Personal settings</Item.Header>
+                <Item.Header>Personal settings</Item.Header>
                 <Item.Description>
                   Manage account, favorites and other here
                 </Item.Description>

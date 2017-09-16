@@ -3,7 +3,7 @@ import ProductOutward from './../sections/product-outward'
 import { Segment, Button } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import { $addProduct } from './../../../actions/product'
+import { $addProduct } from './../../../actions'
 
 const propTypes = {
   onProductAdd: PropTypes.func

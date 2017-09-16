@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Segment, Button, Header } from 'semantic-ui-react'
-import { $addCycle, $cancelCycleCreation } from './../../../actions/test-cycles'
+import { $addCycle, $cancelCycleCreation } from './../../../actions'
 import CycleOutward from './../sections/cycle-outward'
 
 const propTypes = {
