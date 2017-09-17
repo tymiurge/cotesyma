@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import ProductFieldsToolbar from './product-fields-toolbar'
-import { Segment, Icon, Form, Progress, Menu } from 'semantic-ui-react'
+import { Segment, Icon, Form, Progress, Menu, Container } from 'semantic-ui-react'
 import { v4 } from 'js-uuid'
 import { TagsInput } from './../../common'
-import InputFieldConfig from './input-field-wizard'
+import InputFieldBody from './input-field-body'
+import NewFieldWizard from './new-field-wizard'
 
 class ProductFields extends Component {
   constructor (props) {
@@ -57,8 +58,11 @@ class ProductFields extends Component {
     return (
       <div>
         <ProductFieldsToolbar />
-        <InputFieldConfig />
-        <div>
+        <Container style={{marginBottom: '15px'}}>
+          <NewFieldWizard />
+          <InputFieldBody />
+        </Container>
+        <Container>
           {/* ==================================================================*/ }
           <Menu attached="top" borderless size="large" inverted color="orange">
             <Menu.Item>
@@ -168,7 +172,7 @@ class ProductFields extends Component {
           <Segment attached style={{padding: '0px'}}>
             <Progress percent={100} size="tiny" style={{marginBottom: '0px'}} color="orange" />
           </Segment>
-        </div>
+        </Container>
       </div>
     )
   }

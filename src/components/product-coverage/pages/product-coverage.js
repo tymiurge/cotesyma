@@ -55,11 +55,11 @@ class ProductCoverage extends Component {
                         onNewItemRequest={() => { this.openNewTestWizard()}}
                     />
                     {
-                        this.props.wizardDisplayed
-                        && <NewTestWizard 
-                            onCancelClick={ () => { this.closeNewTestWizard()} }
-                            onSaveClick={ testData => { this.addTest(testData)} }
-                        />
+                    this.props.wizardDisplayed && 
+                    <NewTestWizard 
+                        onCancelClick={ () => { this.closeNewTestWizard()} }
+                        onSaveClick={ testData => { this.addTest(testData)} }
+                    />
                     }
                     <ItemsList headers={headers} items={this.props.tests}/>
                 </Container>
