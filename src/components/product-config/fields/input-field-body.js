@@ -1,11 +1,16 @@
 import React, {Component} from 'react'
 // import { Segment, Form } from 'semantic-ui-react'
-// import { Packet } from './../../common'
+import { ItemOutward } from './../../common'
 
 class InputFieldBody extends Component {
     render () {
         return (
-            <a>a</a>//<Segment></Segment>
+            <ItemOutward 
+                nameLabel={'Field Name'}
+                descLabel={'Field Description'}
+                namePlaceholder={'Field Name'}
+                descPlaceholder={'Field Description'}
+            />    
         )
     }
 }

@@ -1,31 +1,70 @@
 import React, {Component} from 'react'
 import { Segment, Form } from 'semantic-ui-react'
-import WizardHeader from './field-wizard-header'
 import FieldBodySelector from './field-wizard-selector'
 import { DataLosingAlert } from './data-losing-alert'
-import { Packet, ItemOutward, SaveCancelBottomPanel } from './../../common'
+import { Packet, SaveCancelBottomPanel, WizardHeader } from './../../common'
 
 class NewFieldWizard extends Component {
     constructor (props) {
         super(props)
         this.state = {
             typeSelected: false,
-            type: 'Input',
+            type: '',
+            typeDropdownDisabled: false,
+            candidateType: null,
             typeReselectionAlertReseted: false,
             typeReselectionAlert: false
         }
     }
 
     onFieldTypeSelection = fieldType => {
-        if (this.state.typeSelected && this.state.typeReselectionAlertReseted) {
+        if (this.state.typeSelected && !this.state.typeReselectionAlertReseted) {
             const updates = {
+                typeDropdownDisabled: true,
+                candidateType: fieldType,
                 typeReselectionAlert: true,
-                type: fieldType
             }
             this.setState(Object.assign({}, this.state, updates))
         } else {
-
+            this.changeFieldType(fieldType)
         }
+    }
+
+    changeFieldType = fieldType => {
+        const updates = {type: fieldType, typeSelected: true}
+        this.setState(Object.assign({}, this.state, updates))
+    }
+
+    onAlertCancelClick = showAlertFlag => {
+        this.setState(
+            Object.assign(
+                {}, 
+                this.state, 
+                {
+                    candidateType: null,
+                    typeDropdownDisabled: false,
+                    typeReselectionAlert: false,
+                    typeReselectionAlertReseted: showAlertFlag
+                }
+            )
+        )
+    }
+
+    onAlertOkClick = showAlertFlag => {
+        const reselectedType = this.state.candidateType
+        this.setState(
+            Object.assign(
+                {}, 
+                this.state, 
+                {
+                    candidateType: null,
+                    typeDropdownDisabled: false,
+                    type: reselectedType,
+                    typeReselectionAlert: false,
+                    typeReselectionAlertReseted: showAlertFlag
+                }
+            )
+        )
     }
 
     render () {
@@ -38,22 +77,30 @@ class NewFieldWizard extends Component {
         return (
             <Packet>
                 <WizardHeader top expanded={true} title={'New Field Wizard'} noIcons/>
-                {
-                !this.state.typeSelected &&
                 <Segment attached>
-                    <Form>
-                        <Form.Select
-                            options={fieldTypes}
-                            placeholder='Select field type...'
-                            onChange={(event, data) => { this.onFieldTypeSelection(data.value) }}
-                        />
-                    </Form>
-                    <DataLosingAlert />
-                    <ItemOutward />
-                    <FieldBodySelector fieldType={this.state.type} />
                     
+                    <Segment>
+                        <Form>
+                            <Form.Select
+                                disabled={this.state.typeDropdownDisabled}
+                                options={fieldTypes}
+                                placeholder='Type...'
+                                onChange={(event, data) => { this.onFieldTypeSelection(data.value) }}
+                                value={this.state.type}
+                                label={'Select Field Type'}
+                            />
+                        </Form>
+                    </Segment>
+                    
+                    {
+                        this.state.typeReselectionAlert && !this.state.typeReselectionAlertReseted &&
+                        <DataLosingAlert onCancelClick={this.onAlertCancelClick} onOkClick={this.onAlertOkClick}/>
+                    }
+                    {
+                        this.state.typeSelected &&
+                        <FieldBodySelector fieldType={this.state.type} />
+                    }                    
                 </Segment>
-                }
                 <SaveCancelBottomPanel color='orange'/>
             </Packet>
         )

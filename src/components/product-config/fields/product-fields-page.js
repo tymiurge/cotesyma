@@ -146,13 +146,7 @@ class ProductFields extends Component {
               <Form.Group widths={16}>
                 <Form.Input placeholder="Field Description" width={16} />
               </Form.Group>
-              <Form.Group inline>
-                <label style={{width: '130px'}}>* for workflow steps:</label>
-                <Form.Dropdown
-                  inline multiple selection
-                  options={workflowSteps}
-                />
-              </Form.Group>
+              
 
               <TagsInput
                 tags={['Option 1', 'Shrek', 'Because', 'Cucumber']}
