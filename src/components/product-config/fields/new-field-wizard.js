@@ -13,7 +13,8 @@ class NewFieldWizard extends Component {
             typeDropdownDisabled: false,
             candidateType: null,
             typeReselectionAlertReseted: false,
-            typeReselectionAlert: false
+            typeReselectionAlert: false,
+            formState: {}
         }
     }
 
@@ -26,13 +27,9 @@ class NewFieldWizard extends Component {
             }
             this.setState(Object.assign({}, this.state, updates))
         } else {
-            this.changeFieldType(fieldType)
+            const updates = {type: fieldType, typeSelected: true}
+            this.setState(Object.assign({}, this.state, updates))
         }
-    }
-
-    changeFieldType = fieldType => {
-        const updates = {type: fieldType, typeSelected: true}
-        this.setState(Object.assign({}, this.state, updates))
     }
 
     onAlertCancelClick = showAlertFlag => {
@@ -58,6 +55,7 @@ class NewFieldWizard extends Component {
                 this.state, 
                 {
                     candidateType: null,
+                    formState: {},
                     typeDropdownDisabled: false,
                     type: reselectedType,
                     typeReselectionAlert: false,
@@ -65,6 +63,12 @@ class NewFieldWizard extends Component {
                 }
             )
         )
+    }
+
+    fieldsChangesPipeline = update => {
+        const formState = Object.assign({}, this.state.formState, update)
+        const newState = Object.assign({}, this.state, {formState})
+        this.setState(newState)
     }
 
     render () {
@@ -98,7 +102,11 @@ class NewFieldWizard extends Component {
                     }
                     {
                         this.state.typeSelected &&
-                        <FieldBodySelector fieldType={this.state.type} />
+                        <FieldBodySelector
+                            fieldType={this.state.type}
+                            formValues={this.state.formState}
+                            onValueChange={this.fieldsChangesPipeline.bind(this)}
+                        />
                     }                    
                 </Segment>
                 <SaveCancelBottomPanel color='orange'/>

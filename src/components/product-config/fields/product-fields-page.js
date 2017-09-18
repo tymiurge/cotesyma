@@ -3,7 +3,6 @@ import ProductFieldsToolbar from './product-fields-toolbar'
 import { Segment, Icon, Form, Progress, Menu, Container } from 'semantic-ui-react'
 import { v4 } from 'js-uuid'
 import { TagsInput } from './../../common'
-import InputFieldBody from './input-field-body'
 import NewFieldWizard from './new-field-wizard'
 
 class ProductFields extends Component {
@@ -60,7 +59,6 @@ class ProductFields extends Component {
         <ProductFieldsToolbar />
         <Container style={{marginBottom: '15px'}}>
           <NewFieldWizard />
-          <InputFieldBody />
         </Container>
         <Container>
           {/* ==================================================================*/ }

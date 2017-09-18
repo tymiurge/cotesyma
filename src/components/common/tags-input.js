@@ -6,6 +6,7 @@ const propTypes = {
   tags: PropTypes.array.isRequired,
   onTagRemove: PropTypes.func,
   onTagAdd: PropTypes.func,
+  onChange: PropTypes.func,
   label: PropTypes.string,
   labelWidth: PropTypes.number,
   placeholder: PropTypes.string
@@ -14,7 +15,8 @@ const propTypes = {
 const defaultProps = {
   label: 'Tags',
   labelWidth: 100,
-  placeholder: 'Add a tag...'
+  placeholder: 'Add a tag...',
+  onChange: () => {}
 }
 
 class TagsInput extends Component {
@@ -35,7 +37,10 @@ class TagsInput extends Component {
         this.state,
         { tags: newTags }
       ),
-      () => { this.props.onTagRemove && this.props.onTagRemove(tag) }
+      () => { 
+        this.props.onTagRemove && this.props.onTagRemove(tag)
+        this.props.onChange(this.state.tags) 
+      }
     )
   }
 
@@ -57,7 +62,10 @@ class TagsInput extends Component {
               this.state,
               {inputValue: '', tags: newTags}
             ),
-            () => { this.props.onTagAdd && this.props.onTagAdd(newTag) }
+            () => { 
+              this.props.onTagAdd && this.props.onTagAdd(newTag) 
+              this.props.onChange(this.state.tags)
+            }
           )
         })()
       : null
