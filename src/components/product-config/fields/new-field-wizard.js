@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import { Segment, Form } from 'semantic-ui-react'
 import FieldBodySelector from './field-wizard-selector'
 import { DataLosingAlert } from './data-losing-alert'
-import { Packet, SaveCancelBottomPanel, WizardHeader } from './../../common'
+import { Packet, SaveCancelBottomPanel, CancelBottomPanel, WizardHeader } from './../../common'
 
 class NewFieldWizard extends Component {
     constructor (props) {
@@ -14,7 +14,8 @@ class NewFieldWizard extends Component {
             candidateType: null,
             typeReselectionAlertReseted: false,
             typeReselectionAlert: false,
-            formState: {}
+            formState: {},
+            onlyCancel: true
         }
     }
 
@@ -55,6 +56,7 @@ class NewFieldWizard extends Component {
                 this.state, 
                 {
                     candidateType: null,
+                    onlyCancel: true,
                     formState: {},
                     typeDropdownDisabled: false,
                     type: reselectedType,
@@ -67,7 +69,7 @@ class NewFieldWizard extends Component {
 
     fieldsChangesPipeline = update => {
         const formState = Object.assign({}, this.state.formState, update)
-        const newState = Object.assign({}, this.state, {formState})
+        const newState = Object.assign({}, this.state, {formState, onlyCancel: false})
         this.setState(newState)
     }
 
@@ -109,7 +111,16 @@ class NewFieldWizard extends Component {
                         />
                     }                    
                 </Segment>
-                <SaveCancelBottomPanel color='orange'/>
+                {
+                    this.state.onlyCancel
+                        ? <CancelBottomPanel
+                            color='orange'
+                            cancelColor='grey'
+                            onCancelClick={this.props.onCancelClick}
+                        />
+                        : <SaveCancelBottomPanel color='orange' cancelColor='grey' onCancelClick={this.props.onCancelClick}/>
+                }
+                
             </Packet>
         )
     }

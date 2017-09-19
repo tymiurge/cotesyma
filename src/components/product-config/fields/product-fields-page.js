@@ -1,9 +1,15 @@
 import React, { Component } from 'react'
-import ProductFieldsToolbar from './product-fields-toolbar'
 import { Segment, Icon, Form, Progress, Menu, Container } from 'semantic-ui-react'
+import PropTypes from 'prop-types'
 import { v4 } from 'js-uuid'
-import { TagsInput } from './../../common'
+import { TagsInput, Toolbar } from './../../common'
 import NewFieldWizard from './new-field-wizard'
+
+
+const propTypes = {
+  newWizardDisplayed: PropTypes.bool,
+  onEnteringFieldCreation: PropTypes.func.isRequired
+}
 
 class ProductFields extends Component {
   constructor (props) {
@@ -56,9 +62,19 @@ class ProductFields extends Component {
     ]
     return (
       <div>
-        <ProductFieldsToolbar />
+        <Toolbar
+          onNewItemRequest={this.props.onEnteringFieldCreation}
+          showFilter={false}
+          showUnlockBtn={false}
+          showHistoryBtn={false}
+          showEditColumnsBtn={false}
+        />
         <Container style={{marginBottom: '15px'}}>
-          <NewFieldWizard />
+          {
+            this.props.newWizardDisplayed &&
+            <NewFieldWizard onCancelClick={this.props.onExitingFieldCreation}/>
+          }
+          
         </Container>
         <Container>
           {/* ==================================================================*/ }
@@ -169,5 +185,7 @@ class ProductFields extends Component {
     )
   }
 }
+
+ProductFields.propTypes = propTypes
 
 export default ProductFields

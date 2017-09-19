@@ -3,7 +3,7 @@ import { Container } from 'semantic-ui-react'
 import ProductConfigHeader from './../sections/product-config-header'
 import { Route, Switch } from 'react-router-dom'
 import ProductFeatures from './../sections/product-features'
-import ProductFields from './../fields/product-fields-page'
+import ProductFields from './../fields/product-fields-container'
 import ProductWorkflow from './../sections/product-workflow'
 import ProductConfigOutward from './product-outward/product-config-outward'
 
