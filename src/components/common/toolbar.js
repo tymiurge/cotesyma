@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { Component } from 'react'
 import { Menu, Icon, Popup, Input } from 'semantic-ui-react'
+import PropTypes from 'prop-types'
 
 /**
  *  The idea is to keep toolbar as a dump component, therefore no props
@@ -17,67 +18,107 @@ import { Menu, Icon, Popup, Input } from 'semantic-ui-react'
  *      }
  */
 
-const Toolbar = (props) => {
-  const scene = {
-    onNewItemRequest: props.onNewItemRequest || (() => {}),
-    onFilterChange: props.onFilterChange || (() => {}),
-    creatingNewItem: false || props.creatingNewItem,
-    text: Object.assign(
-      {},
-      {
-        addPopup: 'Add new item',
-        unlockPopup: 'Unlock',
-        editColumnsPopup: 'Edit Columns',
-        historyPopup: 'Show history',
-        filterPlaceholder: 'Filter items...'
-      },
-      props.text
+const propTypes = {
+  onNewItemRequest: PropTypes.func,
+  onFilterChange: PropTypes.func,
+  creatingNewItem: PropTypes.bool,
+  text: PropTypes.shape({
+    addPopup: PropTypes.string,
+    unlockPopup: PropTypes.string,
+    editColumnsPopup: PropTypes.string,
+    historyPopup: PropTypes.string,
+    filterPlaceholder: PropTypes.string
+  }),
+  showAddBtn: PropTypes.bool,
+  showUnlockBtn: PropTypes.bool,
+  showFilter: PropTypes.bool,
+  showEditColumnsBtn: PropTypes.bool,
+  showHistoryBtn: PropTypes.bool
+}
+
+const defaultProps = {
+  onNewItemRequest: () => {},
+  onFilterChange: () => {},
+  creatingNewItem: false,
+  text: {
+    addPopup: 'Add new item',
+    unlockPopup: 'Unlock',
+    editColumnsPopup: 'Edit Columns',
+    historyPopup: 'Show history',
+    filterPlaceholder: 'Filter items...'
+  },
+  showAddBtn: true,
+  showUnlockBtn: true,
+  showFilter: true,
+  showEditColumnsBtn: true,
+  showHistoryBtn: true
+}
+
+class Toolbar extends Component {
+  render () {
+    const { props } = this
+    return (
+      <Menu icon borderless fluid>
+        {
+          props.showAddBtn &&
+          <Menu.Item onClick={!props.creatingNewItem && props.onNewItemRequest}>
+            <Popup
+              trigger={<Icon name="plus" />}
+              content={props.text.addPopup}
+              position="bottom center"
+            />
+          </Menu.Item>
+        }
+        {
+          props.showUnlockBtn &&
+          <Menu.Item>
+            <Popup
+              trigger={<Icon name="unlock" />}
+              content={props.text.unlockPopup}
+              position="bottom center"
+            />
+          </Menu.Item>
+        }
+        {
+          props.showFilter &&
+          <Menu.Item>
+            <Input
+              icon="filter" iconPosition="left"
+              placeholder={props.text.filterPlaceholder}
+              transparent style={{width: '300px'}}
+              onChange={(e) => { props.onFilterChange(e.target.value) }}
+            />
+          </Menu.Item>
+        }
+        
+        <Menu.Menu icon position="right">
+          {
+            props.showEditColumnsBtn &&
+            <Menu.Item>
+              <Popup
+                trigger={<Icon name="table" />}
+                content={props.text.editColumnsPopup}
+                position="top left"
+              />
+            </Menu.Item>
+          }
+          {
+            props.showHistoryBtn &&
+            <Menu.Item>
+              <Popup
+                trigger={<Icon name="history" />}
+                content={props.text.historyPopup}
+                position="top left"
+              />
+            </Menu.Item>
+          }
+        </Menu.Menu>
+      </Menu>
     )
   }
-  const { text } = scene
-
-  return (
-    <Menu icon borderless fluid>
-      <Menu.Item onClick={!scene.creatingNewItem && scene.onNewItemRequest}>
-        <Popup
-          trigger={<Icon name="plus" />}
-          content={text.addPopup}
-          position="bottom center"
-        />
-      </Menu.Item>
-      <Menu.Item>
-        <Popup
-          trigger={<Icon name="unlock" />}
-          content={text.unlockPopup}
-          position="bottom center"
-        />
-      </Menu.Item>
-      <Menu.Item>
-        <Input
-          icon="filter" iconPosition="left"
-          placeholder={text.filterPlaceholder}
-          transparent style={{width: '300px'}}
-          onChange={(e) => { scene.onFilterChange(e.target.value) }}
-        />
-      </Menu.Item>
-      <Menu.Menu icon position="right">
-        <Menu.Item>
-          <Popup
-            trigger={<Icon name="table" />}
-            content={text.editColumnsPopup}
-            position="top left"
-          />
-        </Menu.Item>
-        <Menu.Item>
-          <Popup
-            trigger={<Icon name="history" />}
-            content={text.historyPopup}
-            position="top left"
-          />
-        </Menu.Item>
-      </Menu.Menu>
-    </Menu>
-  )
 }
+
+Toolbar.propTypes = propTypes
+Toolbar.defaultProps = defaultProps
 
 export default Toolbar
