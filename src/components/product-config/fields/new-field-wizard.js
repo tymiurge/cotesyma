@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import { Segment, Form } from 'semantic-ui-react'
-import FieldBodySelector from './field-wizard-selector'
+import FieldBodySelector from './field-body-selector'
 import { DataLosingAlert } from './data-losing-alert'
 import { Packet, SaveCancelBottomPanel, CancelBottomPanel, WizardHeader } from './../../common'
 

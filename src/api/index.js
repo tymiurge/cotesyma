@@ -49,6 +49,7 @@ const db = {
     }
   ],
 
+
   testCycles: [
     {
       id: 0, name: 'Test Cycles new feature testing',
@@ -61,48 +62,61 @@ const db = {
     }
   ],
 
-  productsWithConfig: [
+  productConfigs: [
     {
-      id: 1, name: 'SimTo-I', desc: 'managing personal backlogs', configured: false,
-      config: {
-        fields: [
-          {type: 'list', name: 'Coverage Type', options: ['Sanity', 'Full']},
-          {type: 'input', name: 'Author'}
-        ],
-        features: [
+      productId: 0, 
+      testFields: [
+        {
+          system: true, field: 'name', title: 'Test Name', type: 'string'
+        }, 
+        {
+          system: true, field: 'description', title: 'Test Description', type: 'text'
+        },
+        
+        /*
+          here are just examples of possible field types
           {
-            name: 'Home',
-            childrens: [
-              {name: 'Favorites'},
-              {name: 'Admin tools access'}
-            ]
+            system: true, field: 'feature', title: 'Feature', type: 'feature-select'
+          },
+          {
+            system: false, field: 'businessPriority', title: 'Business Priority', type:'single-select',
+            options: ['Critical', 'High', 'Medium', 'Low', 'Undefined'], defaultOption: 'Undefined'
+          },
+          {
+            system: false, field: 'author', title: 'Created by', type: 'user-select'
+          },
+          {
+            system: false, field: 'creationWorkflow', title: 'Creation Forkflow', type: 'workflow', 
+            source: [{
+              title: 'To Create',
+            }, {
+              title: 'Creation In Progress',
+            }, {
+              title: 'To Review',
+            }, {
+              title: 'Review in progress'
+            }, {
+              title: 'Ready'
+            }, {
+              title: 'Not actual'
+            }]
           }, {
-            name: 'Products List', childrens: [
-              {name: 'CRUD product'},
-              {name: 'Filtering products'}
-            ]
-          }, {
-            name: 'Product Config', childrens: [
-              {name: 'Otward config'},
-              {
-                name: 'Fields for tests config', childrens: [
-                  {name: 'Input type field'},
-                  {name: 'Combo type field'}
-                ]
-              },
-              {
-                name: 'Product features', childrens: [
-                  {name: 'CRUD parent level feature'},
-                  {name: 'CRUD child level feature'}
-                ]
-              }
-            ]
+            system: false, field: 'maintenanceWorkflow', title: 'Maintenance Workflow', type: 'workflow',
+            source: [{
+              title: '
+            }]
           }
-        ]
-      }
+        */
+      ]
     }
   ]
 }
+
+export const fetchProductFields = productId => 
+  delay(30).then(() => {
+    const config = db.productConfigs.find(config => config.productId === productId)
+    return config.testFields
+  })
 
 export const fetchProductTests = productId => 
   delay(50).then(() => {

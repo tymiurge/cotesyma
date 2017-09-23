@@ -9,9 +9,18 @@ const newWizardDisplayed = (state = false, action) => {
     }
 }
 
+const list = (state = [], action) => {
+    switch (action.type) {
+        case 'PRODUCT_FIELDS_FETCHED':
+            return action.fields
+        default: 
+            return state
+    }
+}
+
 export const productFieldsReducer = (state = {}, action) => {
     return {
-        //list: list(state.list, action),
+        list: list(state.list, action),
         newWizardDisplayed: newWizardDisplayed(state.newWizardDisplayed, action)
     }
 }
