@@ -67,10 +67,12 @@ const db = {
       productId: 0, 
       testFields: [
         {
-          system: true, field: 'name', title: 'Test Name', type: 'string'
+          system: true, field: 'name', title: 'Test Name', type: 'string',
+          desc: 'Test Name that follows special convention'
         }, 
         {
-          system: true, field: 'description', title: 'Test Description', type: 'text'
+          system: true, field: 'description', title: 'Test Description', type: 'text',
+          desc: 'Short description of the test representing its objective.'
         },
         
         /*

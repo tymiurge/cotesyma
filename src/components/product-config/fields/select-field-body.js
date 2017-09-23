@@ -2,6 +2,7 @@ import React, { Component} from 'react'
 import { Form, Segment } from 'semantic-ui-react'
 import { TagsInput } from './../../common'
 
+// refactor to be used in field-wizard-builder
 class SingleSelectFieldBody extends Component {
 
 

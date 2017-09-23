@@ -1,7 +1,8 @@
 import React, {Component} from 'react'
 // import { Segment, Form } from 'semantic-ui-react'
 import { ItemOutward } from './../../common'
-
+// TODO think if it's really needed - using in too many placed overcomplicates props sync
+// TODO @deprecated 
 class InputFieldBody extends Component {
     render () {
         return (

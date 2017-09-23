@@ -4,6 +4,7 @@ import FieldBodySelector from './field-body-selector'
 import { DataLosingAlert } from './data-losing-alert'
 import { Packet, SaveCancelBottomPanel, CancelBottomPanel, WizardHeader } from './../../common'
 
+// TODO: simplify it!!!!!
 class NewFieldWizard extends Component {
     constructor (props) {
         super(props)
@@ -74,11 +75,25 @@ class NewFieldWizard extends Component {
     }
 
     render () {
+        /**
+         * TODO: move field type selector to common as field-type-selector.js
+         * the following options must be available:
+         *   string
+         *   text
+         *   feature-select
+         *   single-select
+         *   user-select
+         *   workflow
+         *   multi-select
+         */
         const fieldTypes = [
-            {text: 'Input', value: 'Input'},
-            {text: 'Single Select', value: 'Single Select'},
-            {text: 'Multyselect', value: 'Multyselect'},
-            {text: 'Workflow', value: 'Workflow'}
+            {text: 'String', value: 'string'},
+            {text: 'Single Select', value: 'single-select'},
+            {text: 'Text', value: 'text'},
+            {text: 'Multyselect', value: 'multi-select'},
+            {text: 'Workflow', value: 'Workflow'},
+            {text: 'User Select', value: 'user-select'},
+            {text: 'User Select', value: 'user-select'}
         ]
         return (
             <Packet>
@@ -104,6 +119,7 @@ class NewFieldWizard extends Component {
                     }
                     {
                         this.state.typeSelected &&
+                        // TODO get rid of FieldBodySelector comp - use class method instead
                         <FieldBodySelector
                             fieldType={this.state.type}
                             formValues={this.state.formState}

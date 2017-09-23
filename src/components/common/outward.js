@@ -3,7 +3,8 @@ import PropTypes from 'prop-types'
 import { Segment, Form, TextArea } from 'semantic-ui-react'
 
 /*
- *  Represents the base elements of an item: name and description 
+ * TODO think whether it is really needed - lots of problems with synchronizing fields  
+ * Represents the base elements of an item: name and description 
  */
 
 const propTypes = {
