@@ -2,7 +2,7 @@ import React from 'react'
 import InputFieldBody from './input-field-body'
 import SingleSelectFieldBody from './select-field-body'
 
-// TODO: DEPRECATED
+// TODO: DEPRECATED - use class method instead
 const FieldBodySelector = props => {
     if (props.fieldType === 'string') return <InputFieldBody {...props} />
     if (props.fieldType === 'single-select') return <SingleSelectFieldBody {...props} />

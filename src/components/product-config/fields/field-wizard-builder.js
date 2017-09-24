@@ -3,6 +3,7 @@ import { Segment } from 'semantic-ui-react'
 import { Packet, WizardHeader } from './../../common'
 import FieldBodySelector from './field-body-selector.js'
 import StringFieldConfig from './string-field-config'
+import SelectFieldConfig from './select-field-config'
 
 
 class FieldWizardBuilder extends Component {
@@ -14,7 +15,7 @@ class FieldWizardBuilder extends Component {
         }
     }
 
-    onFieldChangePipeline = update => {
+    onFieldChange = update => {
 
     }
 
@@ -23,27 +24,23 @@ class FieldWizardBuilder extends Component {
     }
 
     fieldBodySelector = () => {
-        /**
-         onValueChange: PropTypes.func.isRequired,
-    titleFieldName: PropTypes.string.isRequired,
-    titleFieldTitleValue: PropTypes.string.isRequired,
-    titleFieldPlaceholder: PropTypes.string.isRequired,
-    descFieldName: PropTypes.string.isRequired,
-    descFieldValue: PropTypes.string.isRequired,
-    descFieldPlaceholder: PropTypes.string.isRequired
-         */
         const { props } = this
         const fieldType = props.type
         if (fieldType === 'string' || fieldType === 'text') {
             return (<StringFieldConfig
                 editable={!props.system}
-                onValueChange={this.onFieldChangePipeline}
+                onValueChange={this.onFieldChange}
                 titleFieldName={'title'}
                 titleFielValue={props.title}
                 titleFieldPlaceholder={'Field Title'}
                 descFieldName={'desc'}
                 descFieldValue={props.desc}
                 descPlaceholder={'Field Descripton'}
+            />)
+        } if (fieldType === 'single-select') {
+            return (<SelectFieldConfig
+                onValueChange={this.onFieldChange}
+                {...this.props}
             />)
         }
     }

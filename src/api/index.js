@@ -73,7 +73,17 @@ const db = {
         {
           system: true, field: 'description', title: 'Test Description', type: 'text',
           desc: 'Short description of the test representing its objective.'
-        },
+        }, {
+          system: false, field: 'target_level', title: 'Target Level', type: 'single-select',
+          desc: 'Specifies what piece of the AUT is going to be under testing.',
+          options: ['System', 'Feature', 'Page', 'Operation', 'Wizard'],
+          defaultOption: 'N/A'
+        }, {
+          system: false, field: 'coverage_level', title: 'Coverage Level', type: 'single-select',
+          desc: 'Specifies level of investigation put into the test subject.',
+          options: ['Sanity', 'Medium', 'Full'],
+          defaultOption: 'N/A'
+        }
         
         /*
           here are just examples of possible field types
