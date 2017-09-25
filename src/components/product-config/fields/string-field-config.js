@@ -41,4 +41,6 @@ class StringFieldConfig extends Component {
     }
 }
 
+StringFieldConfig.propTypes = propTypes
+
 export default StringFieldConfig

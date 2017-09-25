@@ -5,7 +5,6 @@ import { TagsInput } from './../../common'
 // refactor to be used in field-wizard-builder
 class SingleSelectFieldBody extends Component {
 
-
     render () {
         let defaultOptions = [{text: 'No Value', value: 'null'}]
         if (this.props.formValues.tags) {

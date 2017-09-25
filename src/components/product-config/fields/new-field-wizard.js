@@ -1,8 +1,15 @@
 import React, {Component} from 'react'
-import { Segment, Form } from 'semantic-ui-react'
-import FieldBodySelector from './field-body-selector'
+import { Segment } from 'semantic-ui-react'
 import { DataLosingAlert } from './data-losing-alert'
-import { Packet, SaveCancelBottomPanel, CancelBottomPanel, WizardHeader } from './../../common'
+import { 
+    Packet, 
+    SaveCancelBottomPanel, 
+    CancelBottomPanel, 
+    WizardHeader,
+    FieldTypeSelector
+} from './../../common'
+import StringFieldConfig from './string-field-config'
+import SelectFieldConfig from './select-field-config'
 
 // TODO: simplify it!!!!!
 class NewFieldWizard extends Component {
@@ -68,63 +75,50 @@ class NewFieldWizard extends Component {
         )
     }
 
-    fieldsChangesPipeline = update => {
+    onFieldChange = update => {
         const formState = Object.assign({}, this.state.formState, update)
         const newState = Object.assign({}, this.state, {formState, onlyCancel: false})
         this.setState(newState)
     }
 
+    configTypeSelector = () => {
+        const fieldType = this.state.type
+        if (fieldType === 'string' || fieldType === 'text') {
+            return (<StringFieldConfig
+                editable={true}
+                onValueChange={this.onFieldChange}
+                titleFieldName={'title'}
+                
+                titleFieldPlaceholder={'Field Title'}
+                descFieldName={'desc'}
+                
+                descPlaceholder={'Field Descripton'}
+                {...this.state.formValues}
+            />)
+        } if (fieldType === 'single-select') {
+            return (<SelectFieldConfig
+                onValueChange={this.onFieldChange}
+                {...this.state.form}
+            />)
+        }
+    }
+
     render () {
-        /**
-         * TODO: move field type selector to common as field-type-selector.js
-         * the following options must be available:
-         *   string
-         *   text
-         *   feature-select
-         *   single-select
-         *   user-select
-         *   workflow
-         *   multi-select
-         */
-        const fieldTypes = [
-            {text: 'String', value: 'string'},
-            {text: 'Single Select', value: 'single-select'},
-            {text: 'Text', value: 'text'},
-            {text: 'Multyselect', value: 'multi-select'},
-            {text: 'Workflow', value: 'Workflow'},
-            {text: 'User Select', value: 'user-select'},
-            {text: 'User Select', value: 'user-select'}
-        ]
         return (
             <Packet>
                 <WizardHeader top expanded={true} title={'New Field Wizard'} noIcons/>
                 <Segment attached>
-                    
-                    <Segment>
-                        <Form>
-                            <Form.Select
-                                disabled={this.state.typeDropdownDisabled}
-                                options={fieldTypes}
-                                placeholder='Type...'
-                                onChange={(event, data) => { this.onFieldTypeSelection(data.value) }}
-                                value={this.state.type}
-                                label={'Select Field Type'}
-                            />
-                        </Form>
-                    </Segment>
-                    
+                    <FieldTypeSelector
+                        onChange={this.onFieldTypeSelection}
+                        disabled={this.state.typeDropdownDisabled}
+                        value={this.state.type}
+                    />
                     {
                         this.state.typeReselectionAlert && !this.state.typeReselectionAlertReseted &&
                         <DataLosingAlert onCancelClick={this.onAlertCancelClick} onOkClick={this.onAlertOkClick}/>
                     }
                     {
-                        this.state.typeSelected &&
-                        // TODO get rid of FieldBodySelector comp - use class method instead
-                        <FieldBodySelector
-                            fieldType={this.state.type}
-                            formValues={this.state.formState}
-                            onValueChange={this.fieldsChangesPipeline.bind(this)}
-                        />
+                        this.state.typeSelected && this.configTypeSelector()
                     }                    
                 </Segment>
                 {

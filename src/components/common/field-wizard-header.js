@@ -14,9 +14,12 @@ const WizardHeader = props => {
   const expandIcon = props.expanded ? 'angle down' : 'angle right'
   const onExpandIconClick = props.onExpandIconClick || (() => {})
   const labelClassName = props.noIcons ? '' : 'p-left-0'
+  const color = props.color || ""
+  const inverted = color !== ""
+  
   return (
     <div style={{borderWidth: '0px'}}> 
-      <Menu attached={attach} borderless size="large" inverted color="orange">
+      <Menu attached={attach} borderless size="large" inverted={inverted} color={color}>
         {
         !props.noIcons &&
         <Menu.Item>
@@ -28,7 +31,7 @@ const WizardHeader = props => {
         </Menu.Item>
       </Menu>
       {
-      !props.expanded &&
+      !props.expanded && inverted &&
       <Segment className={'wizard-delimiter border-width-0'} attached style={{padding: '0px'}}>
         <Progress percent={100} size="tiny" style={{marginBottom: '0px', borderRadius: '0px'}} color="black" />
       </Segment>

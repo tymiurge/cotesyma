@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { Segment } from 'semantic-ui-react'
 import { Packet, WizardHeader } from './../../common'
-import FieldBodySelector from './field-body-selector.js'
 import StringFieldConfig from './string-field-config'
 import SelectFieldConfig from './select-field-config'
 
@@ -23,7 +22,7 @@ class FieldWizardBuilder extends Component {
         this.setState(Object.assign({}, this.state, {expanded: !this.state.expanded}))
     }
 
-    fieldBodySelector = () => {
+    fieldConfigSelector = () => {
         const { props } = this
         const fieldType = props.type
         if (fieldType === 'string' || fieldType === 'text') {
@@ -46,7 +45,6 @@ class FieldWizardBuilder extends Component {
     }
 
     render () {
-        const { props } = this
         return (
             <Packet>
                 <WizardHeader
@@ -58,7 +56,7 @@ class FieldWizardBuilder extends Component {
                 {
                     this.state.expanded &&
                     <Segment attached>
-                        { this.fieldBodySelector() }
+                        { this.fieldConfigSelector() }
                     </Segment>
                 }
 
