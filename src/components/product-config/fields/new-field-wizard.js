@@ -109,6 +109,7 @@ class NewFieldWizard extends Component {
                 <WizardHeader top expanded={true} title={'New Field Wizard'} noIcons/>
                 <Segment attached>
                     <FieldTypeSelector
+                        key='new_wizard'
                         onChange={this.onFieldTypeSelection}
                         disabled={this.state.typeDropdownDisabled}
                         value={this.state.type}

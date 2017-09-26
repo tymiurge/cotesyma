@@ -13,13 +13,13 @@ const FieldTypeSelector = props => {
         {text: 'Text', value: 'text'},
         {text: 'Multyselect', value: 'multi-select'},
         {text: 'Workflow', value: 'Workflow'},
-        {text: 'User Select', value: 'user-select'},
         {text: 'User Select', value: 'user-select'}
     ]
     return (
         <Segment>
             <Form>
                 <Form.Select
+                    
                     disabled={props.disabled}
                     options={fieldTypes}
                     placeholder={placeholder}

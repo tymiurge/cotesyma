@@ -67,7 +67,7 @@ const db = {
       productId: 0, 
       testFields: [
         {
-          system: true, field: 'name', title: 'Test Name', type: 'string',
+          system: true, field: 'title', title: 'Test Name', type: 'string',
           desc: 'Test Name that follows special convention'
         }, 
         {

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Container } from 'semantic-ui-react'
 import PropTypes from 'prop-types'
-import { Toolbar } from './../../common'
+import { Toolbar, Packet } from './../../common'
 import NewFieldWizard from './new-field-wizard'
 import FieldWizardBuilder from './field-wizard-builder'
 
@@ -30,7 +30,7 @@ class ProductFields extends Component {
 
   render () {
     return (
-      <div>
+      <Packet>
         <Toolbar
           onNewItemRequest={this.props.onEnteringFieldCreation}
           showFilter={false}
@@ -44,12 +44,13 @@ class ProductFields extends Component {
             <NewFieldWizard onCancelClick={this.props.onExitingFieldCreation}/>
           }
           {
-            this.props.testFields.map(fieldConfig => <FieldWizardBuilder {...fieldConfig} />)
+            this.props.testFields.map(fieldConfig =>
+              <FieldWizardBuilder key={fieldConfig.field} {...fieldConfig} />
+            )
           }
-          
         </Container>
         
-      </div>
+      </Packet>
     )
   }
 }
