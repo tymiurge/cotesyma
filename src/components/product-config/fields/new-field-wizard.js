@@ -105,7 +105,7 @@ class NewFieldWizard extends Component {
 
     render () {
         return (
-            <Packet>
+            <Packet marginBottom='1rem'>
                 <WizardHeader top expanded={true} title={'New Field Wizard'} noIcons/>
                 <Segment attached>
                     <FieldTypeSelector
