@@ -10,7 +10,8 @@ const propTypes = {
   newWizardDisplayed: PropTypes.bool,
   testFields: PropTypes.array.isRequired,
   onFetchingFields: PropTypes.func.isRequired,
-  onEnteringFieldCreation: PropTypes.func.isRequired
+  onEnteringFieldCreation: PropTypes.func.isRequired,
+  onItemAdding: PropTypes.func.isRequired
 }
 
 class ProductFields extends Component {
@@ -22,10 +23,6 @@ class ProductFields extends Component {
 
   componentDidMount () {
     this.props.onFetchingFields(this.productId);
-  }
-
-  toggleRowExpand (id) {
-
   }
 
   render () {
@@ -41,7 +38,10 @@ class ProductFields extends Component {
         <Container style={{marginBottom: '15px'}}>
           {
             this.props.newWizardDisplayed &&
-            <NewFieldWizard onCancelClick={this.props.onExitingFieldCreation}/>
+            <NewFieldWizard 
+              onCancelClick={this.props.onExitingFieldCreation}
+              onSaveClick={data => this.props.onItemAdding(this.productId, data)}
+            />
           }
           {
             this.props.testFields.map(fieldConfig =>

@@ -85,14 +85,7 @@ class NewFieldWizard extends Component {
         const fieldType = this.state.type
         if (fieldType === 'string' || fieldType === 'text') {
             return (<StringFieldConfig
-                editable={true}
                 onValueChange={this.onFieldChange}
-                titleFieldName={'title'}
-                
-                titleFieldPlaceholder={'Field Title'}
-                descFieldName={'desc'}
-                
-                descPlaceholder={'Field Descripton'}
                 {...this.state.formValues}
             />)
         } if (fieldType === 'single-select') {
@@ -102,6 +95,8 @@ class NewFieldWizard extends Component {
             />)
         }
     }
+
+    
 
     render () {
         return (
@@ -129,7 +124,15 @@ class NewFieldWizard extends Component {
                             cancelColor='grey'
                             onCancelClick={this.props.onCancelClick}
                         />
-                        : <SaveCancelBottomPanel color='orange' cancelColor='grey' onCancelClick={this.props.onCancelClick}/>
+                        : <SaveCancelBottomPanel
+                            color='orange'
+                            cancelColor='grey'
+                            onCancelClick={this.props.onCancelClick}
+                            onOkClick={() => {
+                                const fieldConfig = Object.assign({}, this.state.formState, {type: this.state.type})
+                                this.props.onSaveClick(fieldConfig)
+                            }}
+                        />
                 }
                 
             </Packet>

@@ -3,7 +3,8 @@ import ProductFields from './product-fields-page'
 import {
     $enterNewFieldCreation,
     $exitNewFieldCreation, 
-    $fetchProductFields
+    $fetchProductFields,
+    $addFieldToConfig
 } from './../../../actions'
 
 const mapStateToProps = state => {
@@ -17,7 +18,8 @@ const mapDispatchToProps = dispatch => {
     return {
         onEnteringFieldCreation: () => { dispatch($enterNewFieldCreation()) },
         onExitingFieldCreation: () => { dispatch($exitNewFieldCreation()) },
-        onFetchingFields: productId => { dispatch($fetchProductFields(productId)) }
+        onFetchingFields: productId => { dispatch($fetchProductFields(productId)) },
+        onItemAdding: (productId, data) => { dispatch($addFieldToConfig(productId, data)) }
     }
 }
 

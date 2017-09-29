@@ -3,9 +3,7 @@ import { Form, TextArea } from 'semantic-ui-react'
 import { TagsInput } from './../../common'
 
 class SelectFieldConfig extends Component {
-
-        
-    
+   
     render () {
         const { props } = this
         return (
@@ -16,7 +14,7 @@ class SelectFieldConfig extends Component {
                         disabled={props.system}
                         placeholder='Field Title'
                         value={props.title}
-                        onChange={(e) => props.onValueChange({'title': e.target.value})} 
+                        onChange={(e) => props.onValueChange({title: e.target.value})} 
                     />
                 </Form.Field>
                 <Form.Field>

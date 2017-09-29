@@ -124,6 +124,14 @@ const db = {
   ]
 }
 
+export const addFieldToProductConfig = (productId, data) => 
+  delay(30).then(() => {
+    const config = db.productConfigs.find(config => config.productId === productId)
+    const field = Object.assign({}, data, {system: false, field: 'unique_name'})
+    config.testFields.push(field)
+    return field
+  })
+
 export const fetchProductFields = productId => 
   delay(30).then(() => {
     const config = db.productConfigs.find(config => config.productId === productId)
