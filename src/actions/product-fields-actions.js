@@ -13,9 +13,13 @@ export const $exitNewFieldCreation = () => dispatch =>
 export const $addFieldToConfig = (productId, data) => dispatch => 
     api.addFieldToProductConfig(productId, data).then(fieldData => {
         dispatch({
+            type: 'EXIT_NEW_FIELD_CREATION'
+        })
+        dispatch({
             type: 'ADD_FIELD_TO_PRODUCT_CONFIG',
             fieldData
         })
+        
     })
 
 export const $fetchProductFields = productId => dispatch => {
