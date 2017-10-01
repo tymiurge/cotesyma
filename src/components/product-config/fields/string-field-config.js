@@ -3,6 +3,8 @@ import { Form, TextArea } from 'semantic-ui-react'
 
 class StringFieldConfig extends Component {
     render () {
+        // TODO get rid of the controlled/uncontrolled warning
+        // TODO fix opening non system string field in fields grid (no values are displayed)
         const { props } = this
         return (
             <Form>

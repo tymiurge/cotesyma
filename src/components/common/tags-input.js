@@ -20,7 +20,7 @@ const defaultProps = {
 }
 
 class TagsInput extends Component {
-
+  // TODO add 2 the same items - make it impossible
   constructor (props) {
     super(props)
     this.state = {
