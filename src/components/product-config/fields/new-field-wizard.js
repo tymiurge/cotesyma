@@ -96,8 +96,6 @@ class NewFieldWizard extends Component {
         }
     }
 
-    
-
     render () {
         return (
             <Packet marginBottom='1rem'>
@@ -135,7 +133,6 @@ class NewFieldWizard extends Component {
                             }}
                         />
                 }
-                
             </Packet>
         )
     }

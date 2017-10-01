@@ -45,7 +45,7 @@ class ProductFields extends Component {
           }
           {
             this.props.testFields.map(fieldConfig =>
-              <FieldWizardBuilder key={fieldConfig.field} {...fieldConfig} />
+              <FieldWizardBuilder key={'list_item_' + fieldConfig.field} {...fieldConfig} />
             )
           }
         </Container>
