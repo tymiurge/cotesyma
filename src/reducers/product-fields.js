@@ -12,7 +12,9 @@ const newWizardDisplayed = (state = false, action) => {
 const list = (state = [], action) => {
     switch (action.type) {
         case 'PRODUCT_FIELDS_FETCHED':
-            return action.fields
+            return [...action.fields]
+        case 'ADD_FIELD_TO_PRODUCT_CONFIG': 
+            return [...state, action.fieldData]
         default: 
             return state
     }
