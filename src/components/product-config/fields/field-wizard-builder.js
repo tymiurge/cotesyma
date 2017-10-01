@@ -27,14 +27,8 @@ class FieldWizardBuilder extends Component {
         const fieldType = props.type
         if (fieldType === 'string' || fieldType === 'text') {
             return (<StringFieldConfig
-                editable={!props.system}
+                {...this.props}
                 onValueChange={this.onFieldChange}
-                titleFieldName={'title'}
-                titleFielValue={props.title}
-                titleFieldPlaceholder={'Field Title'}
-                descFieldName={'desc'}
-                descFieldValue={props.desc}
-                descPlaceholder={'Field Descripton'}
             />)
         } if (fieldType === 'single-select') {
             return (<SelectFieldConfig
