@@ -1,3 +1,5 @@
+import uidV4 from 'uuid/v4' 
+
 const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms))
 
 const db = {
@@ -127,7 +129,7 @@ const db = {
 export const addFieldToProductConfig = (productId, data) => 
   delay(30).then(() => {
     const config = db.productConfigs.find(config => config.productId === productId)
-    const field = Object.assign({}, data, {system: false, field: 'unique_name'})
+    const field = Object.assign({}, data, {system: false, field: uidV4()})
     config.testFields.push(field)
     return field
   })

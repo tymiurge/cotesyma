@@ -86,12 +86,12 @@ class NewFieldWizard extends Component {
         if (fieldType === 'string' || fieldType === 'text') {
             return (<StringFieldConfig
                 onValueChange={this.onFieldChange}
-                {...this.state.formValues}
+                {...this.state.formState}
             />)
         } if (fieldType === 'single-select') {
             return (<SelectFieldConfig
                 onValueChange={this.onFieldChange}
-                {...this.state.form}
+                {...this.state.formState}
             />)
         }
     }
@@ -114,7 +114,8 @@ class NewFieldWizard extends Component {
                         <DataLosingAlert onCancelClick={this.onAlertCancelClick} onOkClick={this.onAlertOkClick}/>
                     }
                     {
-                        this.state.typeSelected && this.configTypeSelector()
+                        this.state.typeSelected && 
+                        this.configTypeSelector()
                     }                    
                 </Segment>
                 {
