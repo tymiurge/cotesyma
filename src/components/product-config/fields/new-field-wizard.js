@@ -11,7 +11,6 @@ import {
 import StringFieldConfig from './string-field-config'
 import SelectFieldConfig from './select-field-config'
 
-// TODO: simplify it!!!!!
 class NewFieldWizard extends Component {
     constructor (props) {
         super(props)

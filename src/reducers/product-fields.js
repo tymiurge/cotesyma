@@ -15,6 +15,12 @@ const list = (state = [], action) => {
             return [...action.fields]
         case 'ADD_FIELD_TO_PRODUCT_CONFIG': 
             return [...state, action.fieldData]
+        case 'EDIT_FIELD_CONFIG': 
+            return state.map(fieldConfig => 
+                fieldConfig.field === action.fieldConfig.field
+                    ? action.fieldConfig
+                    : fieldConfig
+            )
         default: 
             return state
     }

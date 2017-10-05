@@ -134,6 +134,14 @@ export const addFieldToProductConfig = (productId, data) =>
     return field
   })
 
+export const updateFieldConfig = (productId, fieldConfig) => 
+  delay(30).then(() => {
+    const config = db.productConfigs.find(config => config.productId === productId)
+    let theField = config.testFields.find(elmnt => elmnt.field === fieldConfig.field)
+    theField = Object.assign({}, theField, fieldConfig)
+    return theField
+  })
+
 export const fetchProductFields = productId => 
   delay(30).then(() => {
     const config = db.productConfigs.find(config => config.productId === productId)

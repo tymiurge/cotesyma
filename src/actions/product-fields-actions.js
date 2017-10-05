@@ -1,5 +1,11 @@
 import * as api from './../api'
 
+export const $updateFieldConfig = (productId, fieldConfig) => dispatch => 
+    dispatch({
+        type: 'EDIT_FIELD_CONFIG',
+        fieldConfig
+    })
+
 export const $enterNewFieldCreation = () => dispatch =>
     dispatch({
         type: 'ENTER_NEW_FIELD_CREATION'

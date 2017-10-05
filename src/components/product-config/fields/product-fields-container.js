@@ -4,7 +4,8 @@ import {
     $enterNewFieldCreation,
     $exitNewFieldCreation, 
     $fetchProductFields,
-    $addFieldToConfig
+    $addFieldToConfig,
+    $updateFieldConfig
 } from './../../../actions'
 
 const mapStateToProps = state => {
@@ -19,7 +20,8 @@ const mapDispatchToProps = dispatch => {
         onEnteringFieldCreation: () => { dispatch($enterNewFieldCreation()) },
         onExitingFieldCreation: () => { dispatch($exitNewFieldCreation()) },
         onFetchingFields: productId => { dispatch($fetchProductFields(productId)) },
-        onItemAdding: (productId, data) => { dispatch($addFieldToConfig(productId, data)) }
+        onItemAdding: (productId, data) => { dispatch($addFieldToConfig(productId, data)) },
+        onFieldConfigEdit: (productId, fieldConfig) => { dispatch($updateFieldConfig(productId, fieldConfig)) }
     }
 }
 

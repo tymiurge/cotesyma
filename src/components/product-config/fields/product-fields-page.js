@@ -3,7 +3,7 @@ import { Container } from 'semantic-ui-react'
 import PropTypes from 'prop-types'
 import { Toolbar, Packet } from './../../common'
 import NewFieldWizard from './new-field-wizard'
-import FieldWizardBuilder from './field-wizard-builder'
+import FieldWizard from './field-wizard-builder'
 
 
 const propTypes = {
@@ -11,7 +11,8 @@ const propTypes = {
   testFields: PropTypes.array.isRequired,
   onFetchingFields: PropTypes.func.isRequired,
   onEnteringFieldCreation: PropTypes.func.isRequired,
-  onItemAdding: PropTypes.func.isRequired
+  onItemAdding: PropTypes.func.isRequired,
+  onFieldConfigEdit: PropTypes.func.isRequired
 }
 
 class ProductFields extends Component {
@@ -45,7 +46,11 @@ class ProductFields extends Component {
           }
           {
             this.props.testFields.map(fieldConfig =>
-              <FieldWizardBuilder key={'list_item_' + fieldConfig.field} {...fieldConfig} />
+              <FieldWizard
+                key={'list_item_' + fieldConfig.field}
+                formValues={fieldConfig}
+                onSaveClick={ fieldValues => this.props.onFieldConfigEdit(this.productId, fieldValues) }
+              />
             )
           }
         </Container>
